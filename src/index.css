@@ -4,86 +4,104 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ================= BASE VARIABLES ================= */
+
 @layer base {
   :root {
-    --background: 145 80% 97%;
-    --foreground: 165 95% 15%;
-    --card: 0 0% 100%;
-    --card-foreground: 165 95% 15%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 165 95% 15%;
-    --primary: 173 84% 31%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 201 96% 32%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 145 80% 92%;
-    --muted-foreground: 165 30% 40%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 165 95% 15%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 145 30% 90%;
-    --input: 145 30% 90%;
-    --ring: 173 84% 31%;
+    --background: 145 80 % 97 %;
+    --foreground: 165 95 % 15 %;
+    --card: 0 0 % 100 %;
+    --card - foreground: 165 95 % 15 %;
+    --popover: 0 0 % 100 %;
+    --popover - foreground: 165 95 % 15 %;
+    --primary: 173 84 % 31 %;
+    --primary - foreground: 0 0 % 100 %;
+    --secondary: 201 96 % 32 %;
+    --secondary - foreground: 0 0 % 100 %;
+    --muted: 145 80 % 92 %;
+    --muted - foreground: 165 30 % 40 %;
+    --accent: 38 92 % 50 %;
+    --accent - foreground: 165 95 % 15 %;
+    --destructive: 0 84 % 60 %;
+    --destructive - foreground: 0 0 % 98 %;
+    --border: 145 30 % 90 %;
+    --input: 145 30 % 90 %;
+    --ring: 173 84 % 31 %;
     --radius: 1rem;
 
-    --font-sans: 'Manrope', sans-serif;
+    --font - sans: 'Manrope', sans - serif;
   }
 
   .dark {
-    --background: 165 95% 8%;
-    --foreground: 145 80% 97%;
-    --card: 165 95% 8%;
-    --card-foreground: 145 80% 97%;
-    --popover: 165 95% 8%;
-    --popover-foreground: 145 80% 97%;
-    --primary: 173 84% 31%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 201 96% 32%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 165 50% 15%;
-    --muted-foreground: 145 30% 70%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 62% 30%;
-    --destructive-foreground: 145 80% 97%;
-    --border: 165 50% 15%;
-    --input: 165 50% 15%;
-    --ring: 173 84% 31%;
+    --background: 165 95 % 8 %;
+    --foreground: 145 80 % 97 %;
+    --card: 165 95 % 8 %;
+    --card - foreground: 145 80 % 97 %;
+    --popover: 165 95 % 8 %;
+    --popover - foreground: 145 80 % 97 %;
+    --primary: 173 84 % 31 %;
+    --primary - foreground: 0 0 % 100 %;
+    --secondary: 201 96 % 32 %;
+    --secondary - foreground: 0 0 % 100 %;
+    --muted: 165 50 % 15 %;
+    --muted - foreground: 145 30 % 70 %;
+    --accent: 38 92 % 50 %;
+    --accent - foreground: 0 0 % 100 %;
+    --destructive: 0 62 % 30 %;
+    --destructive - foreground: 145 80 % 97 %;
+    --border: 165 50 % 15 %;
+    --input: 165 50 % 15 %;
+    --ring: 173 84 % 31 %;
   }
-}
 
-@layer base {
   * {
-    @apply border-border;
-  }
+    border- color: hsl(var(--border));
+}
+
   body {
-    @apply bg-background text-foreground font-sans antialiased;
-  }
+  background - color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font - family: var(--font - sans);
+  -webkit - font - smoothing: antialiased;
+}
 }
 
-.glass-card {
-  @apply bg-white/70 dark:bg-emerald-950/70 backdrop-blur-md border border-white/20 dark:border-white/10 shadow-lg;
+/* ================= COMPONENTS ================= */
+
+.glass - card {
+  @apply backdrop - blur - md shadow - lg;
+  background - color: hsl(var(--card) / 0.7);
+  border: 1px solid hsl(var(--border) / 0.2);
 }
 
-.scan-overlay {
-  background: linear-gradient(to bottom, rgba(13, 148, 136, 0.2) 0%, transparent 5%, transparent 95%, rgba(13, 148, 136, 0.2) 100%);
+.scan - overlay {
+  background: linear - gradient(
+    to bottom,
+    rgba(13, 148, 136, 0.2) 0 %,
+    transparent 5 %,
+    transparent 95 %,
+    rgba(13, 148, 136, 0.2) 100 %
+  );
   border: 2px solid rgba(13, 148, 136, 0.5);
 }
 
-.scan-line {
+.scan - line {
   height: 2px;
-  background: linear-gradient(to right, transparent, #10b981, transparent);
-  animation: scan 2.5s infinite linear;
+  background: linear - gradient(to right, transparent, #10b981, transparent);
+  animation: scan 2.5s linear infinite;
 }
 
 @keyframes scan {
-  from { transform: translateY(0); }
-  to { transform: translateY(100%); }
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(100 %);
+  }
 }
 
-.animate-in {
-  animation: fadeInSlide 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+.animate -in {
+  animation: fadeInSlide 0.6s cubic- bezier(0.4, 0, 0.2, 1) both;
 }
 
 @keyframes fadeInSlide {
